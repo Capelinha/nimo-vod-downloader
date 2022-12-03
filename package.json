@@ -1,0 +1,51 @@
+{
+  "name": "vod-downloader",
+  "version": "0.0.0",
+  "description": "Project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "docker build -t capelinha/vod-downloader .",
+    "tag:prod": "docker tag capelinha/vod-downloader:latest gcr.io/prime-18eac/vod-downloader",
+    "push:prod": "docker push gcr.io/prime-18eac/vod-downloader",
+    "tag": "docker tag capelinha/vod-downloader:latest gcr.io/prime-dev-e9f48/vod-downloader",
+    "push": "docker push gcr.io/prime-dev-e9f48/vod-downloader",
+    "deploy": "npm run build && npm run tag && npm run push",
+    "deploy:prod": "npm run build && npm run tag:prod && npm run push:prod",
+    "start": "ts-node src/index.ts"
+  },
+  "author": "Mateus Igreja",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/compute": "^2.4.2",
+    "@google-cloud/pubsub": "^2.7.0",
+    "@google-cloud/storage": "^5.15.3",
+    "axios": "^0.19.2",
+    "chunk-promise": "^1.2.1",
+    "commander": "^6.2.0",
+    "firebase-admin": "^9.4.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.20",
+    "m3u8-parser": "^4.5.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
+    "multipart-download": "^1.2.4",
+    "multistream": "^4.1.0",
+    "node-schedule": "^1.3.2",
+    "p-limit": "^3.1.0",
+    "rxjs": "^6.6.3"
+  },
+  "devDependencies": {
+    "@types/multistream": "^2.1.1",
+    "@types/node-schedule": "^1.3.1",
+    "@types/fluent-ffmpeg": "^2.1.16",
+    "@types/lodash": "^4.14.165",
+    "@types/moment": "^2.13.0",
+    "@types/moment-timezone": "^0.5.30",
+    "@types/node": "^12.19.5",
+    "@types/p-limit": "^2.2.0",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.3",
+    "typescript": "^3.9.7"
+  }
+}
